@@ -12,14 +12,18 @@ namespace QuickSort
             Console.WriteLine(string.Join(" ", elements));
 
         }
-
+        
         private static void QuickSort(int[] elements, int lowIndx, int highIndx)
         {
-            if (lowIndx<highIndx)
+            if (lowIndx < highIndx)
             {
                 int partition = Partition(elements, lowIndx, highIndx);
                 QuickSort(elements, lowIndx, partition - 1);
                 QuickSort(elements, partition + 1, highIndx);
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -27,15 +31,15 @@ namespace QuickSort
         {
             int i = lowIndx - 1;
             int pivot = elements[highIndx];
-            for (int j = lowIndx; j <highIndx; j++)
+            for (int j = lowIndx; j < highIndx; j++)
             {
-                if (elements[j]<pivot)
+                if (elements[j] < pivot)
                 {
                     i++;
                     SwapElements(elements, i, j);
                 }
             }
-            SwapElements(elements,i + 1, highIndx);
+            SwapElements(elements, i + 1, highIndx);
             return i + 1;
         }
 
